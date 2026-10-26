@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════
+   DARK THEME  (default)
+   ════════════════════════════════════════════════════════════ */
+:root,
+html.dark {
+  /* Backgrounds — layered near-black browns */
+  --bg-base:      #0a0805;
+  --bg-surface:   #0e0b06;
+  --bg-card:      #141009;
+  --bg-overlay:   #1a1108;
+  --bg-input:     #1f1710;
+
+  /* Text */
+  --text-primary: #f5f0e8;
+  --text-muted:   rgba(245, 240, 232, 0.58);
+  --text-faint:   rgba(245, 240, 232, 0.32);
+  --text-hint:    rgba(245, 240, 232, 0.18);
+
+  /* Borders */
+  --border-subtle: rgba(245, 166, 35, 0.10);
+  --border-gold:   rgba(245, 166, 35, 0.22);
+  --border-strong: rgba(245, 166, 35, 0.45);
+
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.5), 0 16px 48px rgba(245,166,35,0.10);
+  --shadow-glow: 0 8px 32px rgba(245,166,35,0.22);
+  --shadow-nav:  0 4px 24px rgba(0,0,0,0.5);
+
+  /* Navbar bg when scrolled */
+  --navbar-bg: rgba(10, 8, 5, 0.92);
+
+  /* Section accent (hero radial) */
+  --hero-radial: radial-gradient(ellipse at 68% 50%, rgba(245,166,35,0.07) 0%, transparent 62%);
+
+  /* Stat divider */
+  --stat-border: rgba(245,166,35,0.12);
+
+  /* Badge pill */
+  --pill-bg:     rgba(245,166,35,0.07);
+  --pill-border: rgba(245,166,35,0.22);
+
+  /* Icon in category bar */
+  --cat-icon-bg:     rgba(255,255,255,0.03);
+  --cat-icon-border: rgba(245,166,35,0.14);
+
+  /* Social icon */
+  --social-border: rgba(245,166,35,0.18);
+  --social-color:  rgba(245,166,35,0.48);
+
+  /* Drink card image bg */
+  --drink-img-bg: linear-gradient(145deg, #1c0e03, #0a0500);
+
+  /* Branch card image bg */
+  --branch-img-bg: linear-gradient(145deg, #1a0d04, #0a0500);
+
+  /* About visual bg */
+  --about-visual-bg: linear-gradient(145deg, #1c1006, #0e0803, #070401);
+
+  /* Review card bg */
+  --review-bg: var(--bg-card);
+
+  /* Promo banner bg */
+  --promo-bg: linear-gradient(135deg, #141009, #1a1108, #141009);
+}
+
+/* ════════════════════════════════════════════════════════════
+   LIGHT THEME
+   ════════════════════════════════════════════════════════════ */
+html.light {
+  /* Backgrounds — warm cream / ivory palette */
+  --bg-base:      #faf6ef;
+  --bg-surface:   #f3ebe0;
+  --bg-card:      #ffffff;
+  --bg-overlay:   #fff9f0;
+  --bg-input:     #fdf8f0;
+
+  /* Text — rich espresso tones */
+  --text-primary: #1e1208;
+  --text-muted:   rgba(30, 18, 8, 0.62);
+  --text-faint:   rgba(30, 18, 8, 0.40);
+  --text-hint:    rgba(30, 18, 8, 0.22);
+
+  /* Borders — amber tinted, clearly visible */
+  --border-subtle: rgba(196, 125, 14, 0.14);
+  --border-gold:   rgba(196, 125, 14, 0.30);
+  --border-strong: rgba(196, 125, 14, 0.60);
+
+  /* Shadows — soft warm drops */
+  --shadow-card: 0 1px 3px rgba(120,70,10,0.06), 0 8px 24px rgba(120,70,10,0.10);
+  --shadow-glow: 0 8px 32px rgba(196,125,14,0.20);
+  --shadow-nav:  0 2px 16px rgba(120,70,10,0.10);
+
+  /* Navbar bg when scrolled */
+  --navbar-bg: rgba(250, 246, 239, 0.94);
+
+  /* Hero radial — warm amber hint */
+  --hero-radial: radial-gradient(ellipse at 68% 45%, rgba(245,166,35,0.10) 0%, transparent 58%);
+
+  /* Stat divider */
+  --stat-border: rgba(196,125,14,0.18);
+
+  /* Badge pill */
+  --pill-bg:     rgba(196,125,14,0.08);
+  --pill-border: rgba(196,125,14,0.28);
+
+  /* Icon in category bar */
+  --cat-icon-bg:     #ffffff;
+  --cat-icon-border: rgba(196,125,14,0.22);
+
+  /* Social icon */
+  --social-border: rgba(196,125,14,0.25);
+  --social-color:  rgba(196,125,14,0.60);
+
+  /* Drink card image bg */
+  --drink-img-bg: linear-gradient(145deg, #f5e8d0, #e8d5b0);
+
+  /* Branch card image bg */
+  --branch-img-bg: linear-gradient(145deg, #f0e0c4, #e8d0a8);
+
+  /* About visual bg */
+  --about-visual-bg: linear-gradient(145deg, #f0e4d0, #e8d8c0, #f5eedf);
+
+  /* Review card bg */
+  --review-bg: var(--bg-card);
+
+  /* Promo banner bg */
+  --promo-bg: linear-gradient(135deg, #fff4e0, #ffefd4, #fff4e0);
+}
+
+/* ════════════════════════════════════════════════════════════
+   GOLD PALETTE  (theme-neutral)
+   ════════════════════════════════════════════════════════════ */
+:root {
+  --gold:       #f5a623;
+  --gold-light: #ffc84a;
+  --gold-dark:  #c47d0e;
+}
+
+/* ════════════════════════════════════════════════════════════
+   TAILWIND THEME TOKENS
+   ════════════════════════════════════════════════════════════ */
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ════════════════════════════════════════════════════════════
+   BASE STYLES
+   ════════════════════════════════════════════════════════════ */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* ════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ════════════════════════════════════════════════════════════ */
+
+/* Gold gradient text — stays vivid on both themes */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #ffc84a 0%, #f5a623 50%, #c47d0e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Accent bar left of section labels */
+.divider-gold {
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #f5a623, #ffc84a);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Card lift on hover */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── Light-specific surface polish ── */
+
+/* Give every card a clean left accent stripe in light mode */
+html.light .accent-card {
+  border-left: 3px solid #f5a623;
+}
+
+/* Subtle inner shadow on cards in light mode for depth */
+html.light .card-depth {
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Section separator line */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+}
+
+/* Scrollbar hide utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
