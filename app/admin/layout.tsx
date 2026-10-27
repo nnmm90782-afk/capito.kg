@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import {
   LayoutDashboard,
@@ -10,6 +12,8 @@ import {
   ExternalLink,
   CalendarDays,
 } from "lucide-react";
+import { ADMIN_COOKIE } from "../api/admin/login/route";
+import { AdminLogoutButton } from "./AdminLogoutButton";
 
 const NAV_ITEMS = [
   { href: "/admin",           label: "Аналитика",   icon: LayoutDashboard },
@@ -20,7 +24,15 @@ const NAV_ITEMS = [
   { href: "/admin/reviews",   label: "Отзывы",       icon: MessageSquare },
 ] as const;
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default async function AdminLayout({ children }: { children: ReactNode }) {
+  // ── Guard: only allow through if admin session cookie is present ──────────
+  const cookieStore = await cookies();
+  const adminSession = cookieStore.get(ADMIN_COOKIE);
+
+  if (!adminSession?.value) {
+    redirect("/admin-login");
+  }
+
   return (
     <div className="flex min-h-screen" style={{ background: "var(--bg-base)" }}>
       {/* ── Sidebar ── */}
@@ -48,7 +60,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               <div className="font-black text-sm leading-none" style={{ color: "var(--text-primary)" }}>
                 CAPITO
               </div>
-              <div className="text-[10px] font-semibold tracking-widest" style={{ color: "var(--gold)" }}>
+              <div className="text-[10px] font-semibold tracking-widest" style={{ color: "var(--gold, #f5a623)" }}>
                 ADMIN
               </div>
             </div>
@@ -70,8 +82,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           ))}
         </nav>
 
-        {/* Footer link */}
-        <div className="px-3 pb-4">
+        {/* Footer */}
+        <div className="px-3 pb-4 flex flex-col gap-2">
           <Link
             href="/"
             target="_blank"
@@ -81,6 +93,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <ExternalLink size={12} />
             На сайт
           </Link>
+
+          <AdminLogoutButton />
         </div>
       </aside>
 

@@ -7,10 +7,9 @@ export const pool: Pool =
   globalForDb.__pgPool ??
   new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl:
-      process.env.DATABASE_URL && process.env.DATABASE_URL.includes("sslmode=require")
-        ? { rejectUnauthorized: false }
-        : undefined,
+    ssl: process.env.DATABASE_URL?.includes("sslmode=verify-full")
+      ? { rejectUnauthorized: true }
+      : undefined,
   });
 
 if (process.env.NODE_ENV !== "production") globalForDb.__pgPool = pool;
